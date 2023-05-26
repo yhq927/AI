@@ -11,7 +11,7 @@ services:
       function:
         name: AI-3mtl
         description: Initialize
-        runtime: python3.9
+        runtime: custom-container
         memorySize: 128
         cpu: 0.05
         timeout: 60
@@ -20,7 +20,7 @@ services:
         caPort: 1
         customRuntimeConfig:
           command:
-            - python app.py
+            - default
       triggers:
         - name: httpTrigger
           type: http

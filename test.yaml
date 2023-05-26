@@ -1,0 +1,35 @@
+edition: 1.0.0
+name: my-framework-app
+access: default
+services:
+  framework:
+    component: fc
+    props:
+      region: cn-shenzhen
+      service:
+        name: serverless-devs-application
+      function:
+        name: AI-3mtl
+        description: Initialize
+        runtime: python3.9
+        memorySize: 128
+        cpu: 0.05
+        timeout: 60
+        codeUri: ./
+        diskSize: 512
+        caPort: 1
+        customRuntimeConfig:
+          command:
+            - python app.py
+      triggers:
+        - name: httpTrigger
+          type: http
+          config:
+            authType: anonymous
+            methods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - HEAD
+              - PATCH
